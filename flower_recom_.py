@@ -138,17 +138,17 @@ def flower_data_search():
     flowerdatasearch = True
     while flowerdatasearch:
         searchResult = []
-        userSearch = input("\nEnter the beginning of a flower name, color, life cycle, or season: ").lower()
+        userSearch1 = input("\nEnter the beginning of a flower name, color, life cycle, or season: ").lower()
 
-        typeResult = get_ll_values(typell, userSearch)
-        dataResult = get_ll_values(datall, userSearch)
+        typeResult = get_ll_values(typell, userSearch1)
+        dataResult = get_ll_values(datall, userSearch1)
         typeResult += dataResult
         searchResult += typeResult
         
-        print(f"\nFlower types that start with '{userSearch}' include: {searchResult}")
-        userSearch = input("\nWould you like to search for one of these? (y/n): ")
+        print(f"\nFlower types that start with '{userSearch1}' include: {searchResult}")
+        userSearch2 = input("\nWould you like to search for one of these? (y/n): ")
 
-        if userSearch == "y":
+        while userSearch2 == "y":
             userData = input("\nEnter the flower type you would like to search for: ").lower()
             if userData in dataResult:
                 flowerData = get_flower_data(datall, userData)
@@ -261,12 +261,17 @@ def flower_data_search():
                     flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice3=userColor)
                     for flower in flowerData:
                         print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nChild & pet safe\n")  
+            else:
+                print(f"\nThat is not in the list of flower types that start with '{userSearch1}'.")
+                continue
 
             searchAgain = input("Would you like to search again? (y/n): ")
             if searchAgain == "n":
-                flowerdatasearch = False  
+                userSearch2 = "n"  
+            else:
+                break
 
-        elif userSearch == "n":
+        if userSearch2 == "n":
             exitSearch = input("\nWould you like to exit? (y/n): ")
             if exitSearch == "y":
                 flowerdatasearch = False
