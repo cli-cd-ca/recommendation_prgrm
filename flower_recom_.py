@@ -139,7 +139,7 @@ def flower_data_search():
     flowerdatasearch = True
     while flowerdatasearch:
         searchResult = []
-        userSearch1 = input("\nEnter the beginning of a flower name, color, life cycle, or season: ").lower()
+        userSearch1 = input("\nEnter the first letter of a flower name, color, life cycle, or season: ").lower()
 
         typeResult = get_ll_values(typell, userSearch1)
         dataResult = get_ll_values(datall, userSearch1)
