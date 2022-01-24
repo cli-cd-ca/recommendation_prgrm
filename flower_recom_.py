@@ -1,6 +1,7 @@
 
 from linkedlist import LinkedList
 from flower_data import *
+from flower_title import title
 from string import capwords
 
 def flowerlinkedlist(lst):
@@ -146,7 +147,7 @@ def flower_data_search():
         searchResult += typeResult
         
         print(f"\nFlower types that start with '{userSearch1}' include: {searchResult}")
-        userSearch2 = input("\nWould you like to search for one of these? (y/n): ")
+        userSearch2 = input("\nWould you like to search for one of these? (y/n) ")
 
         while userSearch2 == "y":
             userData = input("\nEnter the flower type you would like to search for: ").lower()
@@ -159,19 +160,19 @@ def flower_data_search():
 
             elif userData in typeResult:
                 if userData in ['winter', 'spring', 'summer', 'fall']:
-                    userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n): ")
+                    userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n) ")
                     if userChoice2 == "y":
                         userLifeCycle = input("\nEnter a flower life cycle (perennial, annual, biennial): ").lower()
                     else:
                         userLifeCycle = None
 
-                    userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n): ")
+                    userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n) ")
                     if userChoice3 == "y":
                         userColor = input("\nEnter a flower color: ").lower()
                     else:
                         userColor = None
                         
-                    userChoiceSafe = input(f"\nWould you like to search for child and pet safe {userData} flowers (y/n): ")
+                    userChoiceSafe = input(f"\nWould you like to search for child and pet safe {userData} flowers? (y/n) ")
                     if userChoiceSafe == "y":
                         flowerData = get_flower_data(datall, userData, userChoice2=userLifeCycle, userChoice3=userColor, userChoice4=userChoiceSafe)
                         for flower in flowerData:
@@ -186,19 +187,19 @@ def flower_data_search():
                                 print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\n")
 
                 elif userData in ['perennial', 'annual', 'biennial']:
-                    userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n): ")
+                    userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
                     if userChoice1 == "y":
                         userSeason = input("\nEnter a flower season: ").lower()
                     else:
                         userSeason = None
 
-                    userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n): ")
+                    userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n) ")
                     if userChoice3 == "y":
                         userColor = input("\nEnter a flower color: ").lower()
                     else:
                         userColor = None
 
-                    userChoiceSafe = input(f"\nWould you like to search for child and pet safe {userData} flowers (y/n): ")
+                    userChoiceSafe = input(f"\nWould you like to search for child and pet safe {userData} flowers (y/n) ")
                     if userChoiceSafe == "y":
                         flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice3=userColor, userChoice4=userChoiceSafe)
                         for flower in flowerData:
@@ -213,19 +214,19 @@ def flower_data_search():
                                 print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\n")    
 
                 elif userData in ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black']:
-                    userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n): ")
+                    userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
                     if userChoice1 == "y":
                         userSeason = input("\nEnter a flower season: ").lower()
                     else:
                         userSeason = None
 
-                    userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n): ")
+                    userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n) ")
                     if userChoice2 == "y":
                         userLifeCycle = input("\nEnter a flower life cycle (perennial, annual, biennial): ").lower()
                     else:
                         userLifeCycle = None
 
-                    userChoiceSafe = input(f"\nWould you like to search for child and pet safe {userData} flowers (y/n): ")
+                    userChoiceSafe = input(f"\nWould you like to search for child and pet safe {userData} flowers (y/n) ")
                     if userChoiceSafe == "y":
                         flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice4=userChoiceSafe)
                         for flower in flowerData:
@@ -240,19 +241,19 @@ def flower_data_search():
                                 print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\n")        
 
                 elif userData == "safe":
-                    userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n): ")
+                    userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
                     if userChoice1 == "y":
                         userSeason = input("\nEnter a flower season: ").lower()
                     else: 
                         userSeason = None
 
-                    userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n): ")
+                    userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n) ")
                     if userChoice2 == "y":
                         userLifeCycle = input("\nEnter a flower life cycle (perennial, annual, biennial): ").lower()
                     else:
                         userLifeCycle = None
 
-                    userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n): ")
+                    userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n) ")
                     if userChoice3 == "y":
                         userColor = input("\nEnter a flower color: ").lower()
                     else:
@@ -262,20 +263,20 @@ def flower_data_search():
                     for flower in flowerData:
                         print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nChild & pet safe\n")  
             else:
-                print(f"\nThat is not in the list of flower types that start with '{userSearch1}'.")
+                print(f"\nThat is not in the list of flower types that start with '{userSearch1}'")
                 continue
 
-            searchAgain = input("Would you like to search again? (y/n): ")
+            searchAgain = input("Would you like to search again? (y/n) ")
             if searchAgain == "n":
                 userSearch2 = "n"  
             else:
                 break
 
         if userSearch2 == "n":
-            exitSearch = input("\nWould you like to exit? (y/n): ")
+            exitSearch = input("\nWould you like to exit? (y/n) ")
             if exitSearch == "y":
                 flowerdatasearch = False
 
-#intro()
+title()
 flower_data_search()                                                              
                            
