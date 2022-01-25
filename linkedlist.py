@@ -1,3 +1,5 @@
+# Codecademy - CS102: Data Structures and Algorithms - Final Project
+# Linked list class
 
 from node import Node 
 
@@ -34,4 +36,3 @@ class LinkedList:
                     current_node = None
                 else:
                     current_node = next_node
-    

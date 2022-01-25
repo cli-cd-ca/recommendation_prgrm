@@ -1,3 +1,7 @@
+# Codecademy - CS102: Data Structures and Algorithms - Final Project
+# Flower types include colors, life cycles, seasons, toxicity, and names (from data list) and flower data
+# includes this information for every named flower (FTD, 2014, <https://www.ftd.com/blog/flower-identification-guide-by-color>;
+# FTD, 2017, <https://www.proflowers.com/blog/types-flower-color>; google search for above type info for every named flower)
 
 flower_types = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black', 
                 'perennial', 'annual', 'biennial', 'winter', 'spring', 'summer', 'fall', 'safe']

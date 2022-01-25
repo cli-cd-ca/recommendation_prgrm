@@ -1,3 +1,5 @@
+# Codecademy - CS102: Data Structures and Algorithms - Final Project
+# Title image
 
 def title():
    print("                                           __       _ _____               _                                     ")

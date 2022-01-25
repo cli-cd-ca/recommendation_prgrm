@@ -1,3 +1,5 @@
+# Codecademy - CS102: Data Structures and Algorithms - Final Project
+# Node class
 
 class Node:
     def __init__(self, value, next_node=None):
@@ -12,4 +14,3 @@ class Node:
 
     def get_next_node(self):
         return self.next_node
-
