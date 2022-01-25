@@ -29,7 +29,7 @@ def get_ll_values(ll, value_to_get):
         current_node = current_node.get_next_node()
     return result
 
-# Gets flower data from the data linked list based on a user search for a flower type
+# Gets flower data from the data linked list based on a user search for a type of flower
 def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userChoice3=None, userChoice4=None):
     result = []
     current_node = ll.get_head_node()
@@ -141,7 +141,7 @@ def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userCh
         current_node = current_node.get_next_node()
     return result
 
-# Prints flower data from a user search for flowers based on a type of flower
+# Prints flower data from a user search for flowers based on a flower type
 def flower_data_search():
     flowerdatasearch = True
     while flowerdatasearch:
@@ -288,6 +288,6 @@ def flower_data_search():
             if exitSearch == "y":
                 flowerdatasearch = False
 
-# Calls the print title image and data search functions
+# Calls the title image and data search functions
 title()
 flower_data_search()                                                                        
