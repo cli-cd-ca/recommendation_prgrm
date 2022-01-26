@@ -1,7 +1,8 @@
 # Codecademy - CS102: Data Structures and Algorithms - Final Project
 # Flower types include colors, life cycles, seasons, toxicity, and names (from data list) and flower data
-# includes this information for every named flower (FTD, 2014, <https://www.ftd.com/blog/flower-identification-guide-by-color>;
-# FTD, 2017, <https://www.proflowers.com/blog/types-flower-color>; google search for above type info for every named flower)
+# includes this information for every flower (FTD. (2014). _Flower Color Identification Guide_. https://www.ftd.com/blog/flower-identification-guide-by-color;
+# ASPCA. (2022). _Poisonous Plants: Toxic and Non-Toxic Plants List_. https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants;
+# ProFlowers. (2017). _Types of Flowers by Color_. https://www.proflowers.com/blog/types-flower-color)
 
 flower_types = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black', 
                 'perennial', 'annual', 'biennial', 'winter', 'spring', 'summer', 'fall', 'safe']
@@ -42,7 +43,7 @@ flower_data = [['chrysanthemum', 'fall', 'perennial/annual', 'red, orange, yello
                ['gloxinia', 'summer/fall', 'perennial/annual', 'red, purple, pink, white', 'safe'],
                ['hellebore', 'winter/spring', 'perennial', 'red, orange, yellow, green, purple, pink, white, black'],
                ['lycoris', 'summer/fall', 'perennial', 'red, orange, yellow, pink, white'],
-               ['verbena', 'spring/summer', 'perennial', 'red, purple, pink, white', 'safe'],
+               ['verbena', 'spring/summer', 'perennial', 'red, purple, pink, white'],
                ['daylily', 'spring/summer', 'perennial', 'red, orange, yellow, green, purple, pink, white'],
                ['ranunculus', 'winter/spring', 'perennial/annual', 'red, orange, yellow, green, purple, pink, white'],
                ['aster', 'summer/fall', 'perennial', 'red, orange, yellow, purple, pink, white'],

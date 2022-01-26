@@ -1,7 +1,7 @@
 # Codecademy - CS102: Data Structures and Algorithms - Final Project
 # Flower recommendation/data search program based on types of flowers
 
-# imports linked list class, flower types and data, and title image
+# Imports linked list class, flower types and data, and title image
 from linkedlist import LinkedList
 from flower_data import *
 from flower_title import title
@@ -141,7 +141,7 @@ def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userCh
         current_node = current_node.get_next_node()
     return result
 
-# Prints flower data from a user search for flowers based on a flower type
+# Prints flower data from a user search for a type of flower
 def flower_data_search():
     flowerdatasearch = True
     while flowerdatasearch:
