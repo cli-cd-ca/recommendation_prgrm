@@ -1,8 +1,8 @@
 # Codecademy - CS102: Data Structures and Algorithms - Final Project
-# Flower types include colors, life cycles, seasons, toxicity, and names (from data list) and flower data
-# includes this information for every flower (FTD. (2014). _Flower Color Identification Guide_. https://www.ftd.com/blog/flower-identification-guide-by-color;
-# ASPCA. (2022). _Poisonous Plants: Toxic and Non-Toxic Plants List_. https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants;
-# ProFlowers. (2017). _Types of Flowers by Color_. https://www.proflowers.com/blog/types-flower-color)
+# Flower types include colors, life cycles, seasons, toxicity, and names (from data list) and flower data includes this information for every flower
+# FTD. (2014). _Flower Color Identification Guide_. https://www.ftd.com/blog/flower-identification-guide-by-color
+# ASPCA. (2022). _Poisonous Plants: Toxic and Non-Toxic Plants List_. https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants
+# ProFlowers. (2017). _Types of Flowers by Color_. https://www.proflowers.com/blog/types-flower-color
 
 flower_types = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black', 
                 'perennial', 'annual', 'biennial', 'winter', 'spring', 'summer', 'fall', 'safe']
