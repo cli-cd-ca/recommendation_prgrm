@@ -276,7 +276,7 @@ def flower_data_search():
                 print(f"\n'{userData}' is not in the list of flower types that start with '{userSearch1}'")
                 continue
 
-            searchAgain = input("Would you like to search again? (y/n) ")
+            searchAgain = input("\nWould you like to search again? (y/n) ")
             if searchAgain == "n":
                 flowerdatasearch = False
                 break 
