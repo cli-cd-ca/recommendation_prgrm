@@ -185,16 +185,9 @@ def flower_data_search():
                     userChoiceSafe = input(f"\nWould you like to search for pet safe {userData} flowers? (y/n) ")
                     if userChoiceSafe == "y":
                         flowerData = get_flower_data(datall, userData, userChoice2=userLifeCycle, userChoice3=userColor, userChoice4=userChoiceSafe)
-                        for flower in flowerData:
-                            print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nPet safe\n")
 
                     elif userChoiceSafe == "n":
-                        flowerData = get_flower_data(datall, userData, userChoice2=userLifeCycle, userChoice3=userColor)
-                        for flower in flowerData:
-                            if len(flower) == 5:
-                                print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nPet safe\n")
-                            else:
-                                print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\n")          
+                        flowerData = get_flower_data(datall, userData, userChoice2=userLifeCycle, userChoice3=userColor)          
 
                 elif userData in ['perennial', 'annual', 'biennial']:
                     userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
@@ -212,16 +205,9 @@ def flower_data_search():
                     userChoiceSafe = input(f"\nWould you like to search for pet safe {userData} flowers? (y/n) ")
                     if userChoiceSafe == "y":
                         flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice3=userColor, userChoice4=userChoiceSafe)
-                        for flower in flowerData:
-                            print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nPet safe\n")
 
                     elif userChoiceSafe == "n":
-                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice3=userColor)
-                        for flower in flowerData:
-                            if len(flower) == 5:
-                                print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nPet safe\n")
-                            else:
-                                print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\n")              
+                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice3=userColor)             
 
                 elif userData in ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black']:
                     userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
@@ -239,16 +225,9 @@ def flower_data_search():
                     userChoiceSafe = input(f"\nWould you like to search for pet safe {userData} flowers? (y/n) ")
                     if userChoiceSafe == "y":
                         flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice4=userChoiceSafe)
-                        for flower in flowerData:
-                            print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nPet safe\n")
 
                     elif userChoiceSafe == "n":
-                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle)
-                        for flower in flowerData:
-                            if len(flower) == 5:
-                                print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nPet safe\n")
-                            else:
-                                print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\n")                  
+                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle)                 
 
                 elif userData == "safe":
                     userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
@@ -268,15 +247,23 @@ def flower_data_search():
                         userColor = input("\nEnter a flower color: ").lower()
                     else:
                         userColor = None
+                        
+                    flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice3=userColor) 
+            
+                for flower in flowerData:
+                    if len(flower) == 5:
+                        print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nPet safe\n")
+                    else:
+                        print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\n")
+                
+                if not flowerData:
+                    print("\nThere were no flowers that match this search\n")
 
-                    flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice3=userColor)
-                    for flower in flowerData:
-                        print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nPet safe\n")  
             else:
                 print(f"\n'{userData}' is not in the list of flower types that start with '{userSearch1}'")
                 continue
-
-            searchAgain = input("\nWould you like to search again? (y/n) ")
+            
+            searchAgain = input("Would you like to search again? (y/n) ")
             if searchAgain == "n":
                 flowerdatasearch = False
                 break 
