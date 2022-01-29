@@ -60,7 +60,7 @@ def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userCh
             elif userChoice4 != None:
                 if len(current_node.get_value()) == 5:
                     result.append(current_node.get_value())
-            elif userChoice4 == None:
+            else:
                 result.append(current_node.get_value())
 
         elif value_to_get in current_node.get_value()[2]:
@@ -85,7 +85,7 @@ def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userCh
             elif userChoice4 != None:
                 if len(current_node.get_value()) == 5:
                     result.append(current_node.get_value())
-            elif userChoice4 == None:
+            else:
                 result.append(current_node.get_value())   
 
         elif value_to_get in current_node.get_value()[3]:
@@ -110,7 +110,7 @@ def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userCh
             elif userChoice4 != None:
                 if len(current_node.get_value()) == 5:
                     result.append(current_node.get_value())
-            elif userChoice4 == None:
+            else:
                 result.append(current_node.get_value()) 
 
         elif value_to_get == "safe" and len(current_node.get_value()) == 5:
@@ -135,7 +135,7 @@ def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userCh
             elif userChoice3 != None:
                 if userChoice3 in current_node.get_value()[3]:
                     result.append(current_node.get_value())
-            elif userChoice4 == None:
+            else:
                 result.append(current_node.get_value()) 
 
         current_node = current_node.get_next_node()
