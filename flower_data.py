@@ -5,7 +5,7 @@
 # ProFlowers. (2017). _Types of Flowers by Color_. https://www.proflowers.com/blog/types-flower-color
 
 flower_types = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black', 
-                'perennial', 'annual', 'biennial', 'winter', 'spring', 'summer', 'fall', 'safe']
+                'perennial', 'annual', 'biennial', 'winter', 'spring', 'summer', 'fall', 'pet safe']
 
 flower_data = [['chrysanthemum', 'fall', 'perennial/annual', 'red, orange, yellow, green, purple, pink, white'],
                ['marigold', 'summer/fall', 'perennial/annual', 'red, orange, yellow, pink, white'],

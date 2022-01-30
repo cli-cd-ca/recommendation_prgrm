@@ -113,7 +113,7 @@ def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userCh
             else:
                 result.append(current_node.get_value()) 
 
-        elif value_to_get == "safe" and len(current_node.get_value()) == 5:
+        elif value_to_get == "pet safe" and len(current_node.get_value()) == 5:
             if userChoice1 != None and userChoice2 != None and userChoice3 != None:
                 if userChoice1 in current_node.get_value()[1] and userChoice2 in current_node.get_value()[2] and userChoice3 in current_node.get_value()[3]:
                     result.append(current_node.get_value())
@@ -229,7 +229,7 @@ def flower_data_search():
                     elif userChoiceSafe == "n":
                         flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle)                 
 
-                elif userData == "safe":
+                elif userData == "pet safe":
                     userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
                     if userChoice1 == "y":
                         userSeason = input("\nEnter a flower season: ").lower()
