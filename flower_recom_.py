@@ -38,108 +38,103 @@ def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userCh
         if current_node.get_value()[0] == value_to_get:
             return current_node.get_value()
 
-        elif value_to_get in current_node.get_value()[1]:
-            if userChoice2 != None and userChoice3 != None and userChoice4 != None:
-                if userChoice2 in current_node.get_value()[2] and userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            elif userChoice2 != None and userChoice3 != None:
-                if userChoice2 in current_node.get_value()[2] and userChoice3 in current_node.get_value()[3]:
-                    result.append(current_node.get_value())
-            elif userChoice2 != None and userChoice4 != None:
-                if userChoice2 in current_node.get_value()[2] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            elif userChoice3 != None and userChoice4 != None:
-                if userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            elif userChoice2 != None:
-                if userChoice2 in current_node.get_value()[2]:
-                    result.append(current_node.get_value())
-            elif userChoice3 != None:
-                if userChoice3 in current_node.get_value()[3]:
-                    result.append(current_node.get_value())
-            elif userChoice4 != None:
-                if len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            else:
-                result.append(current_node.get_value())
-
-        elif value_to_get in current_node.get_value()[2]:
-            if userChoice1 != None and userChoice3 != None and userChoice4 != None:
-                if userChoice1 in current_node.get_value()[1] and userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            elif userChoice1 != None and userChoice3 != None:
-                if userChoice1 in current_node.get_value()[1] and userChoice3 in current_node.get_value()[3]:
-                    result.append(current_node.get_value())
-            elif userChoice1 != None and userChoice4 != None:
-                if userChoice1 in current_node.get_value()[1] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            elif userChoice3 != None and userChoice4 != None:
-                if userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            elif userChoice1 != None:
-                if userChoice1 in current_node.get_value()[1]:
-                    result.append(current_node.get_value())
-            elif userChoice3 != None:
-                if userChoice3 in current_node.get_value()[3]:
-                    result.append(current_node.get_value())
-            elif userChoice4 != None:
-                if len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            else:
-                result.append(current_node.get_value())   
-
-        elif value_to_get in current_node.get_value()[3]:
-            if userChoice1 != None and userChoice2 != None and userChoice4 != None:
-                if userChoice1 in current_node.get_value()[1] and userChoice2 in current_node.get_value()[2] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            elif userChoice1 != None and userChoice2 != None:
-                if userChoice1 in current_node.get_value()[1] and userChoice2 in current_node.get_value()[2]:
-                    result.append(current_node.get_value())
-            elif userChoice1 != None and userChoice4 != None:
-                if userChoice1 in current_node.get_value()[1] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            elif userChoice2 != None and userChoice4 != None:
-                if userChoice2 in current_node.get_value()[2] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            elif userChoice1 != None:
-                if userChoice1 in current_node.get_value()[1]:
-                    result.append(current_node.get_value())
-            elif userChoice2 != None:
-                if userChoice2 in current_node.get_value()[2]:
-                    result.append(current_node.get_value())
-            elif userChoice4 != None:
-                if len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-            else:
-                result.append(current_node.get_value()) 
-
-        elif value_to_get == "pet safe" and len(current_node.get_value()) == 5:
+        elif value_to_get in current_node.get_value()[1] or value_to_get in current_node.get_value()[2] or value_to_get in current_node.get_value()[3] or value_to_get == "pet safe" and len(current_node.get_value()) == 5:
             if userChoice1 != None and userChoice2 != None and userChoice3 != None:
                 if userChoice1 in current_node.get_value()[1] and userChoice2 in current_node.get_value()[2] and userChoice3 in current_node.get_value()[3]:
                     result.append(current_node.get_value())
+
+            elif userChoice1 != None and userChoice2 != None and userChoice4 != None:
+                if userChoice1 in current_node.get_value()[1] and userChoice2 in current_node.get_value()[2] and len(current_node.get_value()) == 5:
+                    result.append(current_node.get_value())
+
+            elif userChoice1 != None and userChoice3 != None and userChoice4 != None:
+                if userChoice1 in current_node.get_value()[1] and userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
+                    result.append(current_node.get_value())
+
+            elif userChoice2 != None and userChoice3 != None and userChoice4 != None:
+                if userChoice2 in current_node.get_value()[2] and userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
+                    result.append(current_node.get_value())
+
             elif userChoice1 != None and userChoice2 != None:
                 if userChoice1 in current_node.get_value()[1] and userChoice2 in current_node.get_value()[2]:
-                    result.append(current_node.get_value())
+                    result.append(current_node.get_value()) 
+
             elif userChoice1 != None and userChoice3 != None:
                 if userChoice1 in current_node.get_value()[1] and userChoice3 in current_node.get_value()[3]:
-                    result.append(current_node.get_value())
+                    result.append(current_node.get_value()) 
+
+            elif userChoice1 != None and userChoice4 != None:
+                if userChoice1 in current_node.get_value()[1] and len(current_node.get_value()) == 5:
+                    result.append(current_node.get_value())    
+
             elif userChoice2 != None and userChoice3 != None:
                 if userChoice2 in current_node.get_value()[2] and userChoice3 in current_node.get_value()[3]:
                     result.append(current_node.get_value())
+
+            elif userChoice2 != None and userChoice4 != None:
+                if userChoice2 in current_node.get_value()[2] and len(current_node.get_value()) == 5:
+                    result.append(current_node.get_value())
+
+            elif userChoice3 != None and userChoice4 != None:
+                if userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
+                    result.append(current_node.get_value())
+
             elif userChoice1 != None:
                 if userChoice1 in current_node.get_value()[1]:
                     result.append(current_node.get_value())
+
             elif userChoice2 != None:
                 if userChoice2 in current_node.get_value()[2]:
                     result.append(current_node.get_value())
+
             elif userChoice3 != None:
                 if userChoice3 in current_node.get_value()[3]:
                     result.append(current_node.get_value())
+
+            elif userChoice4 != None:
+                if len(current_node.get_value()) == 5:
+                    result.append(current_node.get_value())
+
             else:
                 result.append(current_node.get_value()) 
 
         current_node = current_node.get_next_node()
     return result
+
+# Gets user input for a more specific search
+def user_choice(userData, q1, q2, q3):
+    if q1 == 1:
+        userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n): ")
+        if userChoice1 == "y":
+            userSeason = input("\nEnter a flower season: ").lower()
+        else:
+            userSeason = None
+
+    if q1 == 2 or q2 == 2:
+        userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n): ")
+        if userChoice2 == "y":
+            userLifeCycle = input("\nEnter a flower life cycle (perennial, annual, biennial): ").lower()
+        else:
+            userLifeCycle = None
+
+    if q2 == 3 or q3 == 3:
+        userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n): ")
+        if userChoice3 == "y":
+            userColor = input("\nEnter a flower color: ").lower()
+        else:
+            userColor = None
+            
+    if q3 == 4:
+        userPetSafe = input(f"\nWould you like to search for child and pet safe {userData} flowers (y/n): ")
+
+    if q1 == 2:
+        return userLifeCycle, userColor, userPetSafe
+    elif q2 == 3:
+        return userSeason, userColor, userPetSafe
+    elif q3 == 4:
+        return userSeason, userLifeCycle, userPetSafe
+    else:
+        return userSeason, userLifeCycle, userColor
 
 # Prints flower data from a user search for a type of flower
 def flower_data_search():
@@ -170,84 +165,28 @@ def flower_data_search():
 
             elif userData in typeResult:
                 if userData in ['winter', 'spring', 'summer', 'fall']:
-                    userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n) ")
-                    if userChoice2 == "y":
-                        userLifeCycle = input("\nEnter a flower life cycle (perennial, annual, biennial): ").lower()
-                    else:
-                        userLifeCycle = None
-
-                    userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n) ")
-                    if userChoice3 == "y":
-                        userColor = input("\nEnter a flower color: ").lower()
-                    else:
-                        userColor = None
-                        
-                    userChoiceSafe = input(f"\nWould you like to search for pet safe {userData} flowers? (y/n) ")
-                    if userChoiceSafe == "y":
-                        flowerData = get_flower_data(datall, userData, userChoice2=userLifeCycle, userChoice3=userColor, userChoice4=userChoiceSafe)
-
-                    elif userChoiceSafe == "n":
+                    userLifeCycle, userColor, userPetSafe = user_choice(userData, 2, 3, 4)
+                    if userPetSafe == "y":
+                        flowerData = get_flower_data(datall, userData, userChoice2=userLifeCycle, userChoice3=userColor, userChoice4=userPetSafe)
+                    elif userPetSafe == "n":
                         flowerData = get_flower_data(datall, userData, userChoice2=userLifeCycle, userChoice3=userColor)          
 
                 elif userData in ['perennial', 'annual', 'biennial']:
-                    userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
-                    if userChoice1 == "y":
-                        userSeason = input("\nEnter a flower season: ").lower()
-                    else:
-                        userSeason = None
-
-                    userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n) ")
-                    if userChoice3 == "y":
-                        userColor = input("\nEnter a flower color: ").lower()
-                    else:
-                        userColor = None
-
-                    userChoiceSafe = input(f"\nWould you like to search for pet safe {userData} flowers? (y/n) ")
-                    if userChoiceSafe == "y":
-                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice3=userColor, userChoice4=userChoiceSafe)
-
-                    elif userChoiceSafe == "n":
+                    userSeason, userColor, userPetSafe = user_choice(userData, 1, 3, 4)
+                    if userPetSafe == "y":
+                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice3=userColor, userChoice4=userPetSafe)
+                    elif userPetSafe == "n":
                         flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice3=userColor)             
 
                 elif userData in ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black']:
-                    userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
-                    if userChoice1 == "y":
-                        userSeason = input("\nEnter a flower season: ").lower()
-                    else:
-                        userSeason = None
-
-                    userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n) ")
-                    if userChoice2 == "y":
-                        userLifeCycle = input("\nEnter a flower life cycle (perennial, annual, biennial): ").lower()
-                    else:
-                        userLifeCycle = None
-
-                    userChoiceSafe = input(f"\nWould you like to search for pet safe {userData} flowers? (y/n) ")
-                    if userChoiceSafe == "y":
-                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice4=userChoiceSafe)
-
-                    elif userChoiceSafe == "n":
+                    userSeason, userLifeCycle, userPetSafe = user_choice(userData, 1, 2, 4)
+                    if userPetSafe == "y":
+                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice4=userPetSafe)
+                    elif userPetSafe == "n":
                         flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle)                 
 
                 elif userData == "pet safe":
-                    userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n) ")
-                    if userChoice1 == "y":
-                        userSeason = input("\nEnter a flower season: ").lower()
-                    else: 
-                        userSeason = None
-
-                    userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n) ")
-                    if userChoice2 == "y":
-                        userLifeCycle = input("\nEnter a flower life cycle (perennial, annual, biennial): ").lower()
-                    else:
-                        userLifeCycle = None
-
-                    userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n) ")
-                    if userChoice3 == "y":
-                        userColor = input("\nEnter a flower color: ").lower()
-                    else:
-                        userColor = None
-                        
+                    userSeason, userLifeCycle, userColor = user_choice(userData, 1, 2, 3)
                     flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice3=userColor) 
             
                 for flower in flowerData:
