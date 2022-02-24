@@ -4,8 +4,13 @@
 # ASPCA. (2022). _Poisonous Plants: Toxic and Non-Toxic Plants List_. https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants
 # ProFlowers. (2017). _Types of Flowers by Color_. https://www.proflowers.com/blog/types-flower-color
 
-flower_types = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black', 
-                'perennial', 'annual', 'biennial', 'winter', 'spring', 'summer', 'fall', 'pet safe']
+flower_colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black'] 
+                
+flower_cycles = ['perennial', 'annual', 'biennial']
+
+flower_seasons = ['winter', 'spring', 'summer', 'fall']
+
+flower_safe = ['pet safe']
 
 flower_data = [['chrysanthemum', 'fall', 'perennial/annual', 'red, orange, yellow, green, purple, pink, white'],
                ['marigold', 'summer/fall', 'perennial/annual', 'red, orange, yellow, pink, white'],

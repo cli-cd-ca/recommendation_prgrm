@@ -1,119 +1,69 @@
 # Codecademy - CS102: Data Structures and Algorithms - Final Project
 # Flower recommendation/data search program based on types of flowers
 
-# Imports linked list class, flower types and data, and title image
-from linkedlist import LinkedList
+# Imports flower data binary search tree, flower types and data lists, and title image
+from flower_data_bst import BST
 from flower_data import *
 from flower_title import title
-from string import capwords
 
-# Instantiates linked lists for flower types and data
-def flowerlinkedlist(lst):
-    ll = LinkedList()
-    for el in lst:
-        ll.insert_beginning(el)
-    return ll
-
-typell = flowerlinkedlist(flower_types)
-datall = flowerlinkedlist(flower_data)
-
-# Gets flower types the user can search for from the type or data linked lists
-def get_ll_values(ll, value_to_get):
+# Gets flower types the user can search for from type or data lists
+def get_list_values(lst, value_to_get):
     result = []
-    current_node = ll.get_head_node()
-    while current_node.get_value() != None:
-        if current_node.get_value()[0] == value_to_get:
-            result.append(current_node.get_value())
-        elif current_node.get_value()[0][0] == value_to_get:
-            result.append(current_node.get_value()[0])
-        current_node = current_node.get_next_node()
+    if value_to_get != "":
+        for val in lst:
+            if val[:len(value_to_get)] == value_to_get:
+                result.append(val)
+            elif val[0][:len(value_to_get)] == value_to_get:
+                result.append(val[0])
     return result
 
-# Gets flower data from the data linked list based on a user search for a type of flower
-def get_flower_data(ll, value_to_get, userChoice1=None, userChoice2=None, userChoice3=None, userChoice4=None):
+# Sorts the flower types retrieved from the type or data lists
+def merge_sort(lst):
+    if len(lst) <= 1:
+        return lst
+    middle = len(lst) // 2
+    left = lst[:middle]
+    right = lst[middle:]
+    left_sort = merge_sort(left)
+    right_sort = merge_sort(right)
+    return merge(left_sort, right_sort)
+ 
+def merge(left, right):
     result = []
-    current_node = ll.get_head_node()
-    while current_node.get_value() != None:
-
-        if current_node.get_value()[0] == value_to_get:
-            return current_node.get_value()
-
-        elif value_to_get in current_node.get_value()[1] or value_to_get in current_node.get_value()[2] or value_to_get in current_node.get_value()[3] or value_to_get == "pet safe" and len(current_node.get_value()) == 5:
-            if userChoice1 != None and userChoice2 != None and userChoice3 != None:
-                if userChoice1 in current_node.get_value()[1] and userChoice2 in current_node.get_value()[2] and userChoice3 in current_node.get_value()[3]:
-                    result.append(current_node.get_value())
-
-            elif userChoice1 != None and userChoice2 != None and userChoice4 != None:
-                if userChoice1 in current_node.get_value()[1] and userChoice2 in current_node.get_value()[2] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-
-            elif userChoice1 != None and userChoice3 != None and userChoice4 != None:
-                if userChoice1 in current_node.get_value()[1] and userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-
-            elif userChoice2 != None and userChoice3 != None and userChoice4 != None:
-                if userChoice2 in current_node.get_value()[2] and userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-
-            elif userChoice1 != None and userChoice2 != None:
-                if userChoice1 in current_node.get_value()[1] and userChoice2 in current_node.get_value()[2]:
-                    result.append(current_node.get_value()) 
-
-            elif userChoice1 != None and userChoice3 != None:
-                if userChoice1 in current_node.get_value()[1] and userChoice3 in current_node.get_value()[3]:
-                    result.append(current_node.get_value()) 
-
-            elif userChoice1 != None and userChoice4 != None:
-                if userChoice1 in current_node.get_value()[1] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())    
-
-            elif userChoice2 != None and userChoice3 != None:
-                if userChoice2 in current_node.get_value()[2] and userChoice3 in current_node.get_value()[3]:
-                    result.append(current_node.get_value())
-
-            elif userChoice2 != None and userChoice4 != None:
-                if userChoice2 in current_node.get_value()[2] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-
-            elif userChoice3 != None and userChoice4 != None:
-                if userChoice3 in current_node.get_value()[3] and len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-
-            elif userChoice1 != None:
-                if userChoice1 in current_node.get_value()[1]:
-                    result.append(current_node.get_value())
-
-            elif userChoice2 != None:
-                if userChoice2 in current_node.get_value()[2]:
-                    result.append(current_node.get_value())
-
-            elif userChoice3 != None:
-                if userChoice3 in current_node.get_value()[3]:
-                    result.append(current_node.get_value())
-
-            elif userChoice4 != None:
-                if len(current_node.get_value()) == 5:
-                    result.append(current_node.get_value())
-
-            else:
-                result.append(current_node.get_value()) 
-
-        current_node = current_node.get_next_node()
+    while (left and right):
+        for i in range(1,len(left[0])):
+            if left[0][i] < right[0][i] or right[0][:len(left[0])] == left[0]: 
+                result.append(left[0])
+                left.pop(0)
+                break
+            elif left[0][i] > right[0][i] or left[0][:len(right[0])] == right[0]:
+                result.append(right[0])
+                right.pop(0)
+                break
+    if left:
+        result += left
+    if right:
+        result += right
     return result
 
-# Gets user input for a more specific search
+# Gets user input to filter search
 def user_choice(userData, q1, q2, q3):
+    print("\nTo filter your results...")
     if q1 == 1:
         userChoice1 = input(f"\nWould you like to search for {userData} flowers for a specific season? (y/n): ")
         if userChoice1 == "y":
             userSeason = input("\nEnter a flower season: ").lower()
+            while userSeason not in ['winter', 'spring', 'summer', 'fall']:
+                userSeason = input("\nEnter winter, spring, summer, or fall: ").lower()
         else:
             userSeason = None
 
     if q1 == 2 or q2 == 2:
         userChoice2 = input(f"\nWould you like to search for {userData} flowers with a specific life cycle? (y/n): ")
         if userChoice2 == "y":
-            userLifeCycle = input("\nEnter a flower life cycle (perennial, annual, biennial): ").lower()
+            userLifeCycle = input("\nEnter a flower life cycle: ").lower()
+            while userLifeCycle not in ['perennial', 'annual', 'biennial']:
+                userLifeCycle = input("\nEnter perennial, annual, or biennial: ").lower()
         else:
             userLifeCycle = None
 
@@ -121,12 +71,18 @@ def user_choice(userData, q1, q2, q3):
         userChoice3 = input(f"\nWould you like to search for {userData} flowers of a specific color? (y/n): ")
         if userChoice3 == "y":
             userColor = input("\nEnter a flower color: ").lower()
+            while userColor not in ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black']:
+                userColor = input("\nEnter red, orange, yellow, green, blue, purple, pink, white, or black: "). lower()
         else:
             userColor = None
             
     if q3 == 4:
-        userPetSafe = input(f"\nWould you like to search for child and pet safe {userData} flowers (y/n): ")
-
+        userChoice4 = input(f"\nWould you like to search for pet safe {userData} flowers (y/n): ")
+        if userChoice4 == "y":
+            userPetSafe = "safe"
+        else:
+            userPetSafe = None
+        
     if q1 == 2:
         return userLifeCycle, userColor, userPetSafe
     elif q2 == 3:
@@ -139,64 +95,117 @@ def user_choice(userData, q1, q2, q3):
 # Prints flower data from a user search for a type of flower
 def flower_data_search():
     flowerdatasearch = True
+    print("\nWelcome to Flowers to Grow, where you can search for flowers to add to your garden!")
     while flowerdatasearch:
         searchResult = []
-        userSearch1 = input("\nEnter the first letter of a flower name, color, life cycle, or season: ").lower()
+        userSearch1 = input("\nEnter the beginning of a flower name, color, life cycle, or season: ").lower()
 
-        typeResult = get_ll_values(typell, userSearch1)
-        dataResult = get_ll_values(datall, userSearch1)
-        typeResult += dataResult
-        searchResult += typeResult
-        
+        typeResult = merge_sort(get_list_values(flower_colors, userSearch1) + get_list_values(flower_cycles, userSearch1) + get_list_values(flower_seasons, userSearch1) + get_list_values(flower_safe, userSearch1))
+        dataResult = merge_sort(get_list_values(flower_data, userSearch1))
+        searchResult = typeResult + dataResult
+
         if len(searchResult) == 0:
             print(f"\nThere were no flower types that start with '{userSearch1}'")
             continue
-        print(f"\nFlower types that start with '{userSearch1}' include: {searchResult}")
-        userSearch2 = input("\nWould you like to search for one of these? (y/n) ")
+        if len(searchResult) == 1:
+            print(f"\nThere was only one flower type that starts with '{userSearch1}': {''.join(searchResult)}")
+            userSearch2 = input(f"\nWould you like to search for {''.join(searchResult)}? (y/n) ")
+            if userSearch2 == "y":
+                userData = ''.join(searchResult)
+        else:
+            print(f"\nFlower types that start with '{userSearch1}' include:  {',  '.join(searchResult)}")
+            userSearch2 = input("\nWould you like to search for one of these types of flowers? (y/n) ")
+            userData = None
         
         while userSearch2 == "y":
-            userData = input("\nEnter the flower type you would like to search for: ").lower()
+            if userData not in (typeResult or dataResult):
+                userData = input("\nEnter the flower type you would like to search for: ").lower()
             if userData in dataResult:
-                flowerData = get_flower_data(datall, userData)
-                if len(flowerData) == 5:
-                    print(f"\n{capwords(str(flowerData[0]))}\nSeason: {flowerData[1]}\nLife cycle: {flowerData[2]}\nColors: {flowerData[3]}\nPet safe\n")
-                else:
-                    print(f"\n{capwords(str(flowerData[0]))}\nSeason: {flowerData[1]}\nLife cycle: {flowerData[2]}\nColors: {flowerData[3]}\n")
+                BST.get(userData)
 
             elif userData in typeResult:
-                if userData in ['winter', 'spring', 'summer', 'fall']:
+                if userData in flower_seasons:
                     userLifeCycle, userColor, userPetSafe = user_choice(userData, 2, 3, 4)
-                    if userPetSafe == "y":
-                        flowerData = get_flower_data(datall, userData, userChoice2=userLifeCycle, userChoice3=userColor, userChoice4=userPetSafe)
-                    elif userPetSafe == "n":
-                        flowerData = get_flower_data(datall, userData, userChoice2=userLifeCycle, userChoice3=userColor)          
-
-                elif userData in ['perennial', 'annual', 'biennial']:
-                    userSeason, userColor, userPetSafe = user_choice(userData, 1, 3, 4)
-                    if userPetSafe == "y":
-                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice3=userColor, userChoice4=userPetSafe)
-                    elif userPetSafe == "n":
-                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice3=userColor)             
-
-                elif userData in ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black']:
-                    userSeason, userLifeCycle, userPetSafe = user_choice(userData, 1, 2, 4)
-                    if userPetSafe == "y":
-                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice4=userPetSafe)
-                    elif userPetSafe == "n":
-                        flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle)                 
-
-                elif userData == "pet safe":
-                    userSeason, userLifeCycle, userColor = user_choice(userData, 1, 2, 3)
-                    flowerData = get_flower_data(datall, userData, userChoice1=userSeason, userChoice2=userLifeCycle, userChoice3=userColor) 
-            
-                for flower in flowerData:
-                    if len(flower) == 5:
-                        print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\nPet safe\n")
+                    if userPetSafe == "safe":
+                        if userColor != None and userLifeCycle != None:
+                            BST.get(userColor+userLifeCycle+userData+userPetSafe)
+                        elif userColor != None:
+                            BST.get(userColor+userData+userPetSafe)
+                        elif userLifeCycle != None:
+                            BST.get(userLifeCycle+userData+userPetSafe)
+                        else:
+                            BST.get(userData+userPetSafe)
                     else:
-                        print(f"\n{capwords(str(flower[0]))}\nSeason: {flower[1]}\nLife cycle: {flower[2]}\nColors: {flower[3]}\n")
-                
-                if not flowerData:
-                    print("\nThere were no flowers that match this search\n")
+                        if userColor != None and userLifeCycle != None:
+                            BST.get(userColor+userLifeCycle+userData)
+                        elif userColor != None:
+                            BST.get(userColor+userData)
+                        elif userLifeCycle != None:
+                            BST.get(userLifeCycle+userData)
+                        else:
+                            BST.get(userData)       
+
+                elif userData in flower_cycles:
+                    userSeason, userColor, userPetSafe = user_choice(userData, 1, 3, 4)
+                    if userPetSafe == "safe":
+                        if userColor != None and userSeason != None:
+                            BST.get(userColor+userData+userSeason+userPetSafe)
+                        elif userColor != None:
+                            BST.get(userColor+userData+userPetSafe)
+                        elif userSeason != None:
+                            BST.get(userData+userSeason+userPetSafe)
+                        else:
+                            BST.get(userData+userPetSafe)
+                    else:
+                        if userColor != None and userSeason != None:
+                            BST.get(userColor+userData+userSeason)
+                        elif userColor != None:
+                            BST.get(userColor+userData)
+                        elif userSeason != None:
+                            BST.get(userData+userSeason)
+                        else:
+                            BST.get(userData)           
+
+                elif userData in flower_colors:
+                    userSeason, userLifeCycle, userPetSafe = user_choice(userData, 1, 2, 4)
+                    if userPetSafe == "safe":
+                        if userLifeCycle != None and userSeason != None:
+                            BST.get(userData+userLifeCycle+userSeason+userPetSafe)
+                        elif userLifeCycle != None:
+                            BST.get(userData+userLifeCycle+userPetSafe)
+                        elif userSeason != None:
+                            BST.get(userData+userSeason+userPetSafe)
+                        else:
+                            BST.get(userData+userPetSafe)
+                    else:
+                        if userLifeCycle != None and userSeason != None:
+                            BST.get(userData+userLifeCycle+userSeason)
+                        elif userLifeCycle != None:
+                            BST.get(userData+userLifeCycle)
+                        elif userSeason != None:
+                            BST.get(userData+userSeason)
+                        else:
+                            BST.get(userData)              
+
+                elif userData in flower_safe:
+                    userSeason, userLifeCycle, userColor = user_choice(userData, 1, 2, 3)
+                    userData = "safe"
+                    if userColor != None and userLifeCycle != None and userSeason != None:
+                        BST.get(userColor+userLifeCycle+userSeason+userData)
+                    elif userColor != None and userLifeCycle != None:
+                        BST.get(userColor+userLifeCycle+userData)
+                    elif userColor != None and userSeason != None:
+                        BST.get(userColor+userSeason+userData)
+                    elif userLifeCycle != None and userSeason != None:
+                        BST.get(userLifeCycle+userSeason+userData)
+                    elif userColor != None:
+                        BST.get(userColor+userData)
+                    elif userLifeCycle != None:
+                        BST.get(userLifeCycle+userData)
+                    elif userSeason != None:
+                        BST.get(userSeason+userData)
+                    else:
+                        BST.get(userData)
 
             else:
                 print(f"\n'{userData}' is not in the list of flower types that start with '{userSearch1}'")
@@ -214,6 +223,8 @@ def flower_data_search():
             if exitSearch == "y":
                 flowerdatasearch = False
 
+    print("\nThanks for searching at Flowers to Grow!")            
+
 # Calls the title image and data search functions
 title()
-flower_data_search()                                                                        
+flower_data_search()                                                                      
